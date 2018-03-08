@@ -38,7 +38,7 @@ namespace LargeAccountLoader
                 Console.WriteLine($"Message: {ex.Message}");
                 Console.WriteLine($"Stack Trace: {ex.StackTrace}");
                 Console.WriteLine("Inner Fault: {0}",
-                    null == ex.InnerException.Message ? "No Inner Fault" : ex.InnerException.Message);
+                ex.InnerException.Message ?? "No Inner Fault");
             }
             catch (System.Exception ex)
             {
@@ -50,9 +50,7 @@ namespace LargeAccountLoader
                 {
                     Console.WriteLine(ex.InnerException.Message);
 
-                    FaultException<Microsoft.Xrm.Sdk.OrganizationServiceFault> fe = ex.InnerException
-                        as FaultException<Microsoft.Xrm.Sdk.OrganizationServiceFault>;
-                    if (fe != null)
+                    if (ex.InnerException is FaultException<Microsoft.Xrm.Sdk.OrganizationServiceFault> fe)
                     {
                         Console.WriteLine($"Timestamp: {fe.Detail.Timestamp}");
                         Console.WriteLine($"Code: {fe.Detail.ErrorCode}");

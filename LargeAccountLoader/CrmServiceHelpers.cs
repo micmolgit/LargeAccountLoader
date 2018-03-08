@@ -180,9 +180,7 @@ namespace Microsoft.Crm.Sdk.ServiceHelper
         /// </summary>
         public virtual Configuration GetServerConfiguration()
         {
-            Boolean ssl;
             Boolean addConfig;
-            int configNumber;
             // Read the configuration from the disk, if it exists, at C:\Users\<username>\AppData\Roaming\CrmServer\Credentials.xml.
             Boolean isConfigExist = ReadConfigurations();
 
@@ -222,7 +220,7 @@ namespace Microsoft.Crm.Sdk.ServiceHelper
                 String input = Console.ReadLine();
                 Console.WriteLine();
                 if (input == String.Empty) input = configurations.Count.ToString();
-                if (!Int32.TryParse(input, out configNumber)) configNumber = -1;
+                if (!Int32.TryParse(input, out int configNumber)) configNumber = -1;
 
                 if (configNumber == 0)
                 {
@@ -251,7 +249,7 @@ namespace Microsoft.Crm.Sdk.ServiceHelper
             {
                 // Get the server address. If no value is entered, default to Microsoft Dynamics
                 // CRM Online in the North American data center.
-                config.ServerAddress = GetServerAddress(out ssl);
+                config.ServerAddress = GetServerAddress(out bool ssl);
 
                 if (String.IsNullOrWhiteSpace(config.ServerAddress))
                     config.ServerAddress = "crm.dynamics.com";
@@ -511,9 +509,7 @@ namespace Microsoft.Crm.Sdk.ServiceHelper
                     ParseOutCredentials(config.Credentials, config.EndpointType, target),
                     new XElement("EndpointType", config.EndpointType.ToString()),
                     new XElement("UserPrincipalName",
-                        (config.UserPrincipalName != null)
-                        ? config.UserPrincipalName
-                        : String.Empty)
+                    config.UserPrincipalName ?? String.Empty)
                 );
 
             if (append)
@@ -780,9 +776,10 @@ namespace Microsoft.Crm.Sdk.ServiceHelper
             {
                 if (currentConfig.EndpointType == AuthenticationProviderType.LiveId)
                 {
-                    authCredentials.SupportingCredentials = new AuthenticationCredentials();
-                    authCredentials.SupportingCredentials.ClientCredentials =
-                        currentConfig.DeviceCredentials;
+                    authCredentials.SupportingCredentials = new AuthenticationCredentials
+                    {
+                        ClientCredentials = currentConfig.DeviceCredentials
+                    };
                 }
 
                 AuthenticationCredentials tokenCredentials =
@@ -962,8 +959,7 @@ namespace Microsoft.Crm.Sdk.ServiceHelper
                         {
                             input = "1";
                         }
-                        int orgNumber;
-                        Int32.TryParse(input, out orgNumber);
+                        Int32.TryParse(input, out int orgNumber);
                         if (orgNumber > 0 && orgNumber <= orgs.Count)
                         {
                             config.OrganizationName = orgs[orgNumber - 1].FriendlyName;
@@ -1431,16 +1427,14 @@ namespace Microsoft.Crm.Sdk.ServiceHelper
 
         public static Credential ReadCredentials(String target)
         {
-            Credential cachedCredential;
 
             // Try to read the username from cache
-            if (credentialCache.TryGetValue(TargetName + target, out cachedCredential))
+            if (credentialCache.TryGetValue(TargetName + target, out Credential cachedCredential))
             {
                 return cachedCredential;
             }
 
-            Credential credential;
-            bool bSuccess = NativeMethods.CredRead(TargetName + target, CRED_TYPE.GENERIC, 0, out credential);
+            bool bSuccess = NativeMethods.CredRead(TargetName + target, CRED_TYPE.GENERIC, 0, out Credential credential);
             // No match found.
             if (!bSuccess)
             {
@@ -1453,8 +1447,7 @@ namespace Microsoft.Crm.Sdk.ServiceHelper
 
         public static Credential ReadWindowsCredential(Uri target)
         {
-            Credential credential;
-            bool bSuccess = NativeMethods.CredRead(target.Host, CRED_TYPE.DOMAIN_PASSWORD, 0, out credential);
+            bool bSuccess = NativeMethods.CredRead(target.Host, CRED_TYPE.DOMAIN_PASSWORD, 0, out Credential credential);
             if (!bSuccess)
             {
                 throw new InvalidOperationException("Unable to read windows credentials for Uri {0}. ErrorCode {1}",
@@ -1472,10 +1465,8 @@ namespace Microsoft.Crm.Sdk.ServiceHelper
         {
             if (String.IsNullOrWhiteSpace(target))
                 throw new ArgumentNullException("target");
-            if (null == userCredentials)
-                throw new ArgumentNullException("userCredentials");
             // Cache the username and password in memory
-            credentialCache[TargetName + target] = userCredentials;
+            credentialCache[TargetName + target] = userCredentials ?? throw new ArgumentNullException("userCredentials");
 
             // Store the credentials if allowed
             string passwordToStore = allowPhysicalStore ? userCredentials.Password : string.Empty;
@@ -1641,12 +1632,7 @@ namespace Microsoft.Crm.Sdk.ServiceHelper
         /// <param name="proxy">Proxy that will be used to authenticate the user</param>
         public AutoRefreshSecurityToken(TProxy proxy)
         {
-            if (null == proxy)
-            {
-                throw new ArgumentNullException("proxy");
-            }
-
-            this._proxy = proxy;
+            this._proxy = proxy ?? throw new ArgumentNullException("proxy");
         }
 
         /// <summary>
