@@ -163,22 +163,26 @@ namespace Microsoft.Crm.Sdk.ServiceHelper
 		{
 			using (StringReader stringReader = new StringReader(xml))
 			{
-				XmlReaderSettings readerSettings = new XmlReaderSettings();
-				readerSettings.IgnoreWhitespace = true;
-				readerSettings.ConformanceLevel = ConformanceLevel.Fragment;
+                XmlReaderSettings readerSettings = new XmlReaderSettings
+                {
+                    IgnoreWhitespace = true,
+                    ConformanceLevel = ConformanceLevel.Fragment
+                };
 
-				XmlDocument doc = new XmlDocument();
+                XmlDocument doc = new XmlDocument();
 				using (XmlReader reader = XmlReader.Create(stringReader, readerSettings))
 				{
 					doc.XmlResolver = null;
 					doc.Load(reader);
 				}
 
-				XmlWriterSettings writerSettings = new XmlWriterSettings();
-				writerSettings.Indent = true;
-				writerSettings.OmitXmlDeclaration = true;
+                XmlWriterSettings writerSettings = new XmlWriterSettings
+                {
+                    Indent = true,
+                    OmitXmlDeclaration = true
+                };
 
-				using (StringWriter stringWriter = new StringWriter(CultureInfo.InvariantCulture))
+                using (StringWriter stringWriter = new StringWriter(CultureInfo.InvariantCulture))
 				{
 					using (XmlWriter writer = XmlWriter.Create(stringWriter, writerSettings))
 					{

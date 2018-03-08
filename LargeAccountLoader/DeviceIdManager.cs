@@ -226,11 +226,13 @@ namespace Microsoft.Crm.Services.Utility
 				return new EnvironmentConfiguration(EnvironmentType.LiveDeviceID, "login.live.com", null);
 			}
 
-			Dictionary<EnvironmentType, string> searchList = new Dictionary<EnvironmentType, string>();
-			searchList.Add(EnvironmentType.LiveDeviceID, "login.live");
-			searchList.Add(EnvironmentType.OrgDeviceID, "login.microsoftonline");
+            Dictionary<EnvironmentType, string> searchList = new Dictionary<EnvironmentType, string>
+            {
+                { EnvironmentType.LiveDeviceID, "login.live" },
+                { EnvironmentType.OrgDeviceID, "login.microsoftonline" }
+            };
 
-			foreach (KeyValuePair<EnvironmentType, string> searchPair in searchList)
+            foreach (KeyValuePair<EnvironmentType, string> searchPair in searchList)
 			{
 				if (issuerUri.Host.Length > searchPair.Value.Length &&
 					issuerUri.Host.StartsWith(searchPair.Value, StringComparison.OrdinalIgnoreCase))
@@ -440,11 +442,13 @@ namespace Microsoft.Crm.Services.Utility
 
 		private static DeviceUserName GenerateDeviceUserName()
 		{
-			DeviceUserName userName = new DeviceUserName();
-			userName.DeviceName = GenerateRandomString(LiveIdConstants.ValidDeviceNameCharacters, MaxDeviceNameLength);
-			userName.DecryptedPassword = GenerateRandomString(LiveIdConstants.ValidDevicePasswordCharacters, MaxDevicePasswordLength);
+            DeviceUserName userName = new DeviceUserName
+            {
+                DeviceName = GenerateRandomString(LiveIdConstants.ValidDeviceNameCharacters, MaxDeviceNameLength),
+                DecryptedPassword = GenerateRandomString(LiveIdConstants.ValidDevicePasswordCharacters, MaxDevicePasswordLength)
+            };
 
-			return userName;
+            return userName;
 		}
 
 		private static string GenerateRandomString(string characterSet, int count)
@@ -766,15 +770,14 @@ namespace Microsoft.Crm.Services.Utility
 					//Parse the error code
 					if (value.StartsWith("dc", StringComparison.Ordinal))
 					{
-						int code;
-						if (int.TryParse(value.Substring(2), NumberStyles.Integer,
-							CultureInfo.InvariantCulture, out code) &&
-							Enum.IsDefined(typeof(DeviceRegistrationErrorCode), code))
-						{
-							this.RegistrationErrorCode = (DeviceRegistrationErrorCode)Enum.ToObject(
-								typeof(DeviceRegistrationErrorCode), code);
-						}
-					}
+                        if (int.TryParse(value.Substring(2), NumberStyles.Integer,
+                            CultureInfo.InvariantCulture, out int code) &&
+                            Enum.IsDefined(typeof(DeviceRegistrationErrorCode), code))
+                        {
+                            this.RegistrationErrorCode = (DeviceRegistrationErrorCode)Enum.ToObject(
+                                typeof(DeviceRegistrationErrorCode), code);
+                        }
+                    }
 				}
 			}
 		}
