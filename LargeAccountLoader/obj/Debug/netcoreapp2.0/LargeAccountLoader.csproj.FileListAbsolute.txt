@@ -1,0 +1,10 @@
+/mnt/d/Orange/OREKA/DCRM/ORM_trunk/Batches/LargeAccountLoader/LargeAccountLoader/bin/Debug/netcoreapp2.0/LargeAccountLoader.deps.json
+/mnt/d/Orange/OREKA/DCRM/ORM_trunk/Batches/LargeAccountLoader/LargeAccountLoader/bin/Debug/netcoreapp2.0/LargeAccountLoader.runtimeconfig.json
+/mnt/d/Orange/OREKA/DCRM/ORM_trunk/Batches/LargeAccountLoader/LargeAccountLoader/bin/Debug/netcoreapp2.0/LargeAccountLoader.runtimeconfig.dev.json
+/mnt/d/Orange/OREKA/DCRM/ORM_trunk/Batches/LargeAccountLoader/LargeAccountLoader/bin/Debug/netcoreapp2.0/LargeAccountLoader.dll
+/mnt/d/Orange/OREKA/DCRM/ORM_trunk/Batches/LargeAccountLoader/LargeAccountLoader/bin/Debug/netcoreapp2.0/LargeAccountLoader.pdb
+/mnt/d/Orange/OREKA/DCRM/ORM_trunk/Batches/LargeAccountLoader/LargeAccountLoader/obj/Debug/netcoreapp2.0/LargeAccountLoader.csproj.CoreCompileInputs.cache
+/mnt/d/Orange/OREKA/DCRM/ORM_trunk/Batches/LargeAccountLoader/LargeAccountLoader/obj/Debug/netcoreapp2.0/LargeAccountLoader.AssemblyInfoInputs.cache
+/mnt/d/Orange/OREKA/DCRM/ORM_trunk/Batches/LargeAccountLoader/LargeAccountLoader/obj/Debug/netcoreapp2.0/LargeAccountLoader.AssemblyInfo.cs
+/mnt/d/Orange/OREKA/DCRM/ORM_trunk/Batches/LargeAccountLoader/LargeAccountLoader/obj/Debug/netcoreapp2.0/LargeAccountLoader.dll
+/mnt/d/Orange/OREKA/DCRM/ORM_trunk/Batches/LargeAccountLoader/LargeAccountLoader/obj/Debug/netcoreapp2.0/LargeAccountLoader.pdb

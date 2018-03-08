@@ -1,0 +1,16 @@
+D:\Orange\OREKA\DCRM\ORM_trunk\Batches\LargeAccountLoader\LargeAccountLoader\bin\Debug\net452\LargeAccountLoader.exe
+D:\Orange\OREKA\DCRM\ORM_trunk\Batches\LargeAccountLoader\LargeAccountLoader\bin\Debug\net452\LargeAccountLoader.pdb
+D:\Orange\OREKA\DCRM\ORM_trunk\Batches\LargeAccountLoader\LargeAccountLoader\obj\Debug\net452\LargeAccountLoader.csproj.CoreCompileInputs.cache
+D:\Orange\OREKA\DCRM\ORM_trunk\Batches\LargeAccountLoader\LargeAccountLoader\obj\Debug\net452\LargeAccountLoader.AssemblyInfoInputs.cache
+D:\Orange\OREKA\DCRM\ORM_trunk\Batches\LargeAccountLoader\LargeAccountLoader\obj\Debug\net452\LargeAccountLoader.AssemblyInfo.cs
+D:\Orange\OREKA\DCRM\ORM_trunk\Batches\LargeAccountLoader\LargeAccountLoader\obj\Debug\net452\LargeAccountLoader.exe
+D:\Orange\OREKA\DCRM\ORM_trunk\Batches\LargeAccountLoader\LargeAccountLoader\obj\Debug\net452\LargeAccountLoader.pdb
+D:\Orange\OREKA\DCRM\ORM_trunk\Batches\LargeAccountLoader\LargeAccountLoader\bin\Debug\net452\Microsoft.Threading.Tasks.Extensions.Desktop.dll
+D:\Orange\OREKA\DCRM\ORM_trunk\Batches\LargeAccountLoader\LargeAccountLoader\bin\Debug\net452\Microsoft.Threading.Tasks.Extensions.dll
+D:\Orange\OREKA\DCRM\ORM_trunk\Batches\LargeAccountLoader\LargeAccountLoader\bin\Debug\net452\Microsoft.Threading.Tasks.dll
+D:\Orange\OREKA\DCRM\ORM_trunk\Batches\LargeAccountLoader\LargeAccountLoader\bin\Debug\net452\Microsoft.Crm.Sdk.Proxy.dll
+D:\Orange\OREKA\DCRM\ORM_trunk\Batches\LargeAccountLoader\LargeAccountLoader\bin\Debug\net452\Microsoft.Xrm.Sdk.dll
+D:\Orange\OREKA\DCRM\ORM_trunk\Batches\LargeAccountLoader\LargeAccountLoader\bin\Debug\net452\Nito.AsyncEx.Concurrent.dll
+D:\Orange\OREKA\DCRM\ORM_trunk\Batches\LargeAccountLoader\LargeAccountLoader\bin\Debug\net452\Nito.AsyncEx.Enlightenment.dll
+D:\Orange\OREKA\DCRM\ORM_trunk\Batches\LargeAccountLoader\LargeAccountLoader\bin\Debug\net452\Nito.AsyncEx.dll
+D:\Orange\OREKA\DCRM\ORM_trunk\Batches\LargeAccountLoader\LargeAccountLoader\obj\Debug\net452\LargeAccountLoader.csprojResolveAssemblyReference.cache
